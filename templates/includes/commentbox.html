@@ -1,0 +1,15 @@
+{% block body %}
+	{% if session['logged_in'] %}
+		<form action = '' class = 'form' method = 'post' id = 'replyform'>
+			<label for = 'post'>Reply:</label>
+			<textarea class = 'form-control' rows = '5' cols = '50' name = 'reply_content' form = 'replyform'></textarea>
+			<br>
+			<input class = 'btn btn-primary' type ='submit' value='submit'>
+			<br>
+			<br>
+		</form>
+	{% else %}
+	<p>You must be <a href = '/login/'> <u>logged in</u> </a> 
+	to post!</p>
+	{% endif %}
+{% endblock %}

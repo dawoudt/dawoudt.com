@@ -1,0 +1,53 @@
+{% extends "header.html" %}
+{% block body %}
+
+
+	
+<div style="margin:0% 10%; background-color:#999999;">
+
+	<div style="margin: 1% 1%">
+
+    <div role = "tabpanel">
+      <ul class="nav nav-tabs" role = "tablist">
+        <li role="presentation" class="active"><a href="#blog" aria-controls="blog" role="tab" data-toggle = "tab">Blog</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle = "tab" >Profile</a></li>
+      </ul>
+    <div class = "tab-content">
+      <div role = "tabpanel" class="tab-pane fade in active" id = "blog">    
+         <div class="blog-header">
+          <h1 class="blog-title">Blog</h1>
+          <p class="lead blog-description">Personal Blog</p>
+        </div>
+        <div class="blog-main  ">
+          {% for t in TOPIC_DICT["Blog"] %}
+            <div class="blog-post">
+              <h2 class="blog-post-title">{{ t[0] }}
+              <a href = "{{ t[1] }} " > <span style = "font-size: 15px" class = " glyphicon glyphicon-link
+"> </span></a>
+              </h2> 
+              <p>{{ t[2] }}</p>
+              <p class="blog-post-meta">January 1, 2014 by <a href="#">Admin</a></p>
+            </div>
+          {% endfor %}
+          <nav>
+            <ul class="pager">
+              <li><a href="#">Previous</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </nav>
+
+        </div><!-- /.blog-main -->
+
+
+
+      </div> 
+      <div role = "tabpanel" class="tab-pane fade" id = "profile">    
+        <p>coming soon</p>
+      </div> 
+    </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

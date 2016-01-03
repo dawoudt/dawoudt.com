@@ -1,0 +1,32 @@
+<h4>Reply: </h4>
+	{% if session['logged_in'] %}
+		{% from "includes/_commentbox-formhelper.html" import render_field %}
+		<form method = post action = "{{ curLink }}" >
+
+			<dl>
+				{{ render_field(form.post) }}
+			</dl>
+
+			<p class = 'alt'>
+				<input type = submit class = 'btn btn-primary 'value = Reply> </p>
+			</p>
+		</form>
+
+		{% if error %}
+			<p class = 'error'><strong>Error:</strong>{{error}}</p>
+		{% endif %}
+
+	{% else %}
+		<p>You must be <a href = '/login/'> <u>logged in</u> </a> 
+		to post!</p>
+	{% endif %}
+
+	{% for s in submitted_posts%}
+		<div class = 'well'>
+			<p>{{s[1]}}</p>
+			<p align = ><b>{{s[0]}}</b></p>
+			<p align="right">{{s[2].strftime('%a, %-d of %B at %-H-%M')}}</p>
+		</div>
+	{%endfor%}
+
+

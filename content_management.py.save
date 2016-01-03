@@ -1,0 +1,5 @@
+def content():
+	TOPIC_DICT = {"Blog":[["Introduction", "/introduction/"],\
+			["First Post", /"First Post"
+	]]
+			}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Blog Template</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		  <link href="{{ url_for('static', filename='bootstrap-3.3.5-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	</head>
+
+
+<header class="navbar navbar-default navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">Home</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/new_dashboard/">Blog</a>
+        </li>
+        <li>
+          <a href="#">Bio</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
+        <h5>
+          {% if session.logged_in %}
+          <a href="/support-donate/"><span class="glyphicon glyphicon-heart"></span> Donate&nbsp;&nbsp;&nbsp;</a>
+          <a href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;<i class="glyphicon glyphicon-search"></i></a>
+          <ul class="dropdown-menu" style="padding:12px;">
+            <form class="form-inline">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+              </div>
+            </form>
+          </ul>
+            {% if session.username == 'admin' %}
+              <span class="glyphicon glyphicon-knight"></span>
+            {% endif %}
+          {% else %}
+          <a href="/support-donate/"><span class="glyphicon glyphicon-heart"></span> Donate&nbsp;&nbsp;&nbsp;</a>
+          <a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login&nbsp;&nbsp;&nbsp;</a>
+          <a href="/register/"><span class="glyphicon glyphicon-pencil"></span> Sign up</a>
+          {% endif %}
+        </h5>
+      </div>
+      </ul>
+
+      
+    </nav>
+  </div>
+</header>
+<body>
+
+  <div class="container">
+    <div style = "margin: 2%">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class = "alert alert-info alert-dismissable text-center" role = "alert">
+              <button type = 'button' class = 'close' data-dismiss = 'alert' aria-label = 'Close'><span aria-hidden = 'true'></span>&times;</button>
+              <b> {{message}} </b>
+            </div>
+
+          {% endfor %}
+
+        {% endif %}
+
+      {% endwith %}
+    </div>
+    
+    {% block body %} {%endblock%}
+
+
+
+
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.5-dist/js/bootstrap.min.js') }}"></script>
+
+	</body>
+</html>
